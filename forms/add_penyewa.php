@@ -2,29 +2,29 @@
 require_once '../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $Nama_Lengkap = $_POST['Nama_Lengkap'];
-    $NIK = $_POST['NIK'];
-    $Jenis_Kelamin = $_POST['Jenis_Kelamin'];
-    $No_HP = $_POST['No_HP'];
-    $Email = $_POST['Email'];
-    $Alamat_asal = $_POST['Alamat_asal'];
-    $Pekerjaan = $_POST['Pekerjaan'];
-    $Tanggal_Masuk = $_POST['Tanggal_Masuk'];
+    $nama_lengkap = $_POST['nama_lengkap'];
+    $nik = $_POST['nik'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
+    $no_hp = $_POST['no_hp'];
+    $email = $_POST['email'];
+    $alamat_asal = $_POST['alamat_asal'];
+    $pekerjaan = $_POST['pekerjaan'];
+    $tanggal_masuk = $_POST['tanggal_masuk'];
 
-    $query = "INSERT INTO penyewa (Nama_Lengkap, NIK, Jenis_Kelamin, No_HP, Email, Alamat_asal, Pekerjaan, Tanggal_Masuk) 
-              VALUES (:Nama_Lengkap, :NIK, :Jenis_Kelamin, :No_HP, :Email, :Alamat_asal, :Pekerjaan, :Tanggal_Masuk)";
+    $query = "INSERT INTO penyewa (nama_lengkap, nik, jenis_kelamin, no_hp, email, alamat_asal, pekerjaan, tanggal_masuk) 
+              VALUES (:nama_lengkap, :nik, :jenis_kelamin, :no_hp, :email, :alamat_asal, :pekerjaan, :tanggal_masuk)";
 
     try {
         $stmt = $pdo->prepare($query);
         $stmt->execute([
-            'Nama_Lengkap' => $Nama_Lengkap,
-            'NIK' => $NIK,
-            'Jenis_Kelamin' => $Jenis_Kelamin,
-            'No_HP' => $No_HP,
-            'Email' => $Email,
-            'Alamat_asal' => $Alamat_asal,
-            'Pekerjaan' => $Pekerjaan,
-            'Tanggal_Masuk' => $Tanggal_Masuk
+            'nama_lengkap' => $nama_lengkap,
+            'nik' => $nik,
+            'jenis_kelamin' => $jenis_kelamin,
+            'no_hp' => $no_hp,
+            'email' => $email,
+            'alamat_asal' => $alamat_asal,
+            'pekerjaan' => $pekerjaan,
+            'tanggal_masuk' => $tanggal_masuk
         ]);
         header('Location: ../index.php?success=1');
     } catch (PDOException $e) {
@@ -43,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="bg-gray-100">
@@ -53,44 +52,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="p-4 sm:ml-64">
         <div class="mt-16">
             <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-2xl font-semibold mb-6">Tambah penyewa Baru</h2>
+                <h2 class="text-2xl font-semibold mb-6">Tambah Penyewa Baru</h2>
                 <form action="add_penyewa.php" method="POST">
                     <div class="grid gap-4 mb-6">
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
-                            <input type="text" name="Nama_Lengkap" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            <input type="text" name="nama_lengkap" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         </div>
                         <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Tipe penyewa</label>
-                            <select name="tipe" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
-                                <option value="Standard">Standard</option>
-                                <option value="Deluxe">Deluxe</option>
-                                <option value="Suite">Suite</option>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">NIK</label>
+                            <input type="text" name="nik" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Jenis Kelamin</label>
+                            <select name="jenis_kelamin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Fasilitas</label>
-                            <textarea name="fasilitas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">No. HP</label>
+                            <input type="text" name="no_hp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         </div>
                         <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Harga Bulanan</label>
-                            <input type="number" name="harga" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         </div>
                         <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Status</label>
-                            <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
-                                <option value="Tersedia">Tersedia</option>
-                                <option value="Terisi">Terisi</option>
-                                <option value="Maintenance">Maintenance</option>
-                            </select>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Alamat Asal</label>
+                            <textarea name="alamat_asal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
                         </div>
                         <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Lantai</label>
-                            <input type="number" name="lantai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Pekerjaan</label>
+                            <input type="text" name="pekerjaan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         </div>
                         <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Kapasitas</label>
-                            <input type="number" name="kapasitas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Tanggal Masuk</label>
+                            <input type="date" name="tanggal_masuk" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         </div>
                     </div>
                     <div class="flex justify-end">
