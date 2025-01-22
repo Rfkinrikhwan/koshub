@@ -2,13 +2,13 @@
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
             <li <?php echo ($_SERVER['PHP_SELF'] == '/index.php') ? 'class="bg-gray-100 dark:bg-gray-700 rounded-lg"' : ''; ?>>
-                <a href="index.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="../index.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-house"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Kamar</span>
                 </a>
             </li>
             <li <?php echo ($_SERVER['PHP_SELF'] == '/penyewa.php') ? 'class="bg-gray-100 dark:bg-gray-700 rounded-lg"' : ''; ?>>
-                <a href="penyewa.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="../penyewa.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-users"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Penyewa</span>
                 </a>
@@ -20,19 +20,19 @@
                 </a>
             </li>
             <li <?php echo ($_SERVER['PHP_SELF'] == '/laporan.php') ? 'class="bg-gray-100 dark:bg-gray-700 rounded-lg"' : ''; ?>>
-                <a href="laporan.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="../laporan.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-book"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Laporan</span>
                 </a>
             </li>
             <li <?php echo ($_SERVER['PHP_SELF'] == '/pembayaran.php') ? 'class="bg-gray-100 dark:bg-gray-700 rounded-lg"' : ''; ?>>
-                <a href="pembayaran.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="../pembayaran.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-money-bill"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Pembayaran</span>
                 </a>
             </li>
             <li <?php echo ($_SERVER['PHP_SELF'] == '/admin.php') ? 'class="bg-gray-100 dark:bg-gray-700 rounded-lg"' : ''; ?>>
-                <a href="admin.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="../admin.php" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-user"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Admin</span>
                 </a>
