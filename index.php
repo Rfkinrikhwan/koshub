@@ -42,7 +42,7 @@ if (isset($_GET['delete'])) {
             <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
                 <div class="flex items-center justify-between">
                     <h3 class="text-xl font-semibold text-gray-800">Data Kamar</h3>
-                    <a href="forms/add_kamar.php" class="px-4 py-2 bg-orange-400 text-white rounded-md hover:bg-blue-700 transition duration-150 ease-in-out text-sm font-medium">
+                    <a href="forms/add_kamar.php" class="px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 transition duration-150 ease-in-out text-sm font-medium">
                         Tambah Kamar
                     </a>
                 </div>

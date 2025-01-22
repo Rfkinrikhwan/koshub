@@ -14,7 +14,7 @@ $userEmail = isset($_SESSION['email']) ? $_SESSION['email'] : 'guest@example.com
                     </svg>
                 </button>
                 <a href="index.php" class="flex ms-2 md:me-24">
-                    <h2 class="text-3xl font-bold text-center text-white">Kos <span class="bg-orange-400 px-3 rounded-md text-black">Hub</span></h2>
+                    <h2 class="text-3xl font-bold text-center dark:text-white">Kos <span class="bg-amber-500 px-3 rounded-md text-white dark:text-black">hub</span></h2>
                 </a>
             </div>
             <div class="flex items-center">
