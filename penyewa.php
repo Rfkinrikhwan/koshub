@@ -39,7 +39,7 @@ if (isset($_GET['delete'])) {
             <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
                 <div class="flex items-center justify-between">
                     <h3 class="text-xl font-semibold text-gray-800">Data Penyewa</h3>
-                    <a href="forms/add_kamar.php" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-150 ease-in-out text-sm font-medium">
+                    <a href="forms/add_penyewa.php" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-150 ease-in-out text-sm font-medium">
                         Tambah Penyewa
                     </a>
                 </div>
@@ -130,7 +130,7 @@ if (isset($_GET['delete'])) {
                                         <!-- <button class="text-blue-600 hover:text-blue-900" onclick="showDetail(<?php echo $penyewa['ID_Penyewa']; ?>)">
                                             <i class="fas fa-eye"></i>
                                         </button> -->
-                                        <a class="text-green-600 hover:text-green-900" href="<?php echo htmlspecialchars('forms/edit_kamar.php?id=' . $penyewa['ID_Penyewa']); ?>">
+                                        <a class="text-green-600 hover:text-green-900" href="<?php echo htmlspecialchars('forms/edit_penyewa.php?id=' . $penyewa['ID_Penyewa']); ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a href="?delete=<?php echo $penyewa['ID_Penyewa']; ?>" class="text-red-600 hover:text-red-900"
