@@ -62,7 +62,7 @@ SIMPLE-WEB/
 
 2. **Clone Repository:**
    ```bash
-   git clone https://github.com/username/koshub.git
+   git clone https://github.com/Rfkinrikhwan/koshub.git
    cd koshub
    ```
 
