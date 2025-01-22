@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="grid gap-4 mb-6">
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
-                            <input type="text" name="nama_lengkap" value="<?= htmlspecialchars($penyewa['nama_lengkap']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="text" name="nama_lengkap" value="<?= htmlspecialchars($penyewa['Nama_Lengkap']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">NIK</label>
@@ -92,17 +92,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Jenis Kelamin</label>
                             <select name="jenis_kelamin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
-                                <option value="Laki-laki" <?= $penyewa['jenis_kelamin'] === 'Laki-laki' ? 'selected' : '' ?>>Laki-laki</option>
-                                <option value="Perempuan" <?= $penyewa['jenis_kelamin'] === 'Perempuan' ? 'selected' : '' ?>>Perempuan</option>
+                                <option value="Laki-laki" <?= $penyewa['Jenis_Kelamin'] === 'Laki-laki' ? 'selected' : '' ?>>Laki-laki</option>
+                                <option value="Perempuan" <?= $penyewa['Jenis_Kelamin'] === 'Perempuan' ? 'selected' : '' ?>>Perempuan</option>
                             </select>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">No. HP</label>
-                            <input type="text" name="no_hp" value="<?= htmlspecialchars($penyewa['no_hp']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="text" name="no_hp" value="<?= htmlspecialchars($penyewa['No_Hp']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                            <input type="email" name="email" value="<?= htmlspecialchars($penyewa['email']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="email" name="email" value="<?= htmlspecialchars($penyewa['Email']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Alamat Asal</label>
