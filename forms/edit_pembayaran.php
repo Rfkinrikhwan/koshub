@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Metode Pembayaran</label>
-                            <select name="metode_pembayaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <select name="Metode_Pembayaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                                 <option value="Transfer" <?= $pembayaran['Metode_Pembayaran'] === 'Transfer' ? 'selected' : '' ?>>Transfer</option>
                                 <option value="Tunai" <?= $pembayaran['Metode_Pembayaran'] === 'Tunai' ? 'selected' : '' ?>>Tunai</option>
                                 <option value="Kartu Kredit" <?= $pembayaran['Metode_Pembayaran'] === 'Kartu Kredit' ? 'selected' : '' ?>>Kartu Kredit</option>
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Status Pembayaran</label>
-                            <select name="status_pembayaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <select name="Status_Pembayaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                                 <option value="Pending" <?= $pembayaran['Status_Pembayaran'] === 'Pending' ? 'selected' : '' ?>>Pending</option>
                                 <option value="Completed" <?= $pembayaran['Status_Pembayaran'] === 'Completed' ? 'selected' : '' ?>>Completed</option>
                                 <option value="Failed" <?= $pembayaran['Status_Pembayaran'] === 'Failed' ? 'selected' : '' ?>>Failed</option>

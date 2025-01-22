@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Perbaikan nama parameter query SQL
     $query = "INSERT INTO reservasi (ID_Penyewa, ID_Kamar, Tanggal_Reservasi, Tanggal_Mulai, Durasi_Sewa, Status_Reservasi) 
-              VALUES (:ID_Penyewa, :ID_Kamar, :Tanggal_Reservasi, :Tanggal_Mulai, :Durasi_Sewa, :Status_Reservasi)";
+              VALUES (:id_penyewa, :id_kamar, :tanggal_reservasi, :tanggal_mulai, :durasi_sewa, :status_reservasi)";
 
     try {
         $stmt = $pdo->prepare($query);
@@ -42,6 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Tambah Reservasi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
 </head>
 
 <body class="bg-gray-100">
@@ -55,12 +59,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <form action="" method="POST">
                     <div class="grid gap-4 mb-6">
                         <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">ID Penyewa</label>
-                            <input type="number" name="id_penyewa" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Penyewa</label>
+                            <select name="id_penyewa" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                                <option value="">Pilih Penyewa</option>
+                                <?php
+                                $stmt = $pdo->prepare("SELECT * FROM penyewa");
+                                $stmt->execute();
+
+                                while ($penyewa = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    echo "<option value='" . $penyewa['ID_Penyewa'] . "'>" . $penyewa['Nama_Lengkap'] . "</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">ID Kamar</label>
-                            <input type="number" name="id_kamar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Kamar</label>
+                            <select name="id_kamar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                                <option value="">Pilih Kamar</option>
+                                <?php
+                                $stmt = $pdo->prepare("SELECT * FROM kamar WHERE Status_Kamar = 'Tersedia'");
+                                $stmt->execute();
+
+                                while ($kamar = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    echo "<option value='" . $kamar['ID_Kamar'] . "'>" . $kamar['Nomor_Kamar'] . "</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Tanggal Reservasi</label>
@@ -84,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
                     <div class="flex justify-end">
-                        <a href="../index.php" class="text-gray-500 bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2">
+                        <a href="../reservasi.php" class="text-gray-500 bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2">
                             Batal
                         </a>
                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5">

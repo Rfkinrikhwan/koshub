@@ -78,12 +78,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <form action="" method="POST">
                     <div class="grid gap-4 mb-6">
                         <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">ID Penyewa</label>
-                            <input type="number" name="ID_Penyewa" value="<?= htmlspecialchars($reservasi['ID_Penyewa']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <!-- <label class="block mb-2 text-sm font-medium text-gray-900">ID Penyewa</label> -->
+                            <input type="hidden" name="ID_Penyewa" value="<?= htmlspecialchars($reservasi['ID_Penyewa']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
-                            <label class="block mb-2 text-sm font-medium text-gray-900">ID Kamar</label>
-                            <input type="number" name="ID_Kamar" value="<?= htmlspecialchars($reservasi['ID_Kamar']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <!-- <label class="block mb-2 text-sm font-medium text-gray-900">ID Kamar</label> -->
+                            <input type="hidden" name="ID_Kamar" value="<?= htmlspecialchars($reservasi['ID_Kamar']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Tanggal Reservasi</label>
@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
                     <div class="flex justify-end">
-                        <a href="../index.php" class="text-gray-500 bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2">
+                        <a href="../reservasi.php" class="text-gray-500 bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2">
                             Batal
                         </a>
                         <button class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5">

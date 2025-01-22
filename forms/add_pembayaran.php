@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status_pembayaran = $_POST['status_pembayaran'];
     $bukti_pembayaran = $_POST['bukti_pembayaran'];
 
-    $query = "INSERT INTO pembayaran (id_reservasi, tanggal_pembayaran, jumlah_pembayaran, metode_pembayaran, status_pembayaran, bukti_pembayaran) 
+    $query = "INSERT INTO pembayaran (ID_Reservasi, Tanggal_Pembayaran, Jumlah_Pembayaran, Metode_Pembayaran, Status_Pembayaran, Bukti_Pembayaran) 
               VALUES (:id_reservasi, :tanggal_pembayaran, :jumlah_pembayaran, :metode_pembayaran, :status_pembayaran, :bukti_pembayaran)";
 
     try {
@@ -39,6 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
 </head>
 
 <body class="bg-gray-100">
@@ -68,15 +72,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <select name="metode_pembayaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                                 <option value="Transfer">Transfer</option>
                                 <option value="Tunai">Tunai</option>
-                                <option value="Kartu Kredit">Kartu Kredit</option>
+                                <option value="E-Wallet">E-Wallet</option>
                             </select>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Status Pembayaran</label>
                             <select name="status_pembayaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
-                                <option value="Pending">Pending</option>
-                                <option value="Completed">Completed</option>
-                                <option value="Failed">Failed</option>
+                                <option value="Pending">Pending</option>+
+                                <option value="Lunas">Lunas</option>
                             </select>
                         </div>
                         <div>
@@ -85,10 +88,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
                     <div class="flex justify-end">
-                        <a href="../index.php" class="text-gray-500 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <a href="../pembayaran.php" class="text-gray-500 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             Batal
                         </a>
-                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                             Simpan
                         </button>
                     </div>
