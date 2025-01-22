@@ -20,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Ambil data pengguna
     $user = $stmt->fetch();
-    var_dump(password_verify($user['Password'], $password));
 
     // Periksa apakah pengguna ditemukan dan verifikasi password
     if ($user && password_verify($password, $user['Password'])) {
