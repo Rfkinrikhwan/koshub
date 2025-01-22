@@ -9,8 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $durasi_sewa = $_POST['durasi_sewa'];
     $status_reservasi = $_POST['status_reservasi'];
 
-    $query = "INSERT INTO reservasi (id_penyewa, id_kamar, tanggal_reservasi, tanggal_mulai, durasi_sewa, status_reservasi) 
-              VALUES (:id_penyewa, :id_kamar, :tanggal_reservasi, :tanggal_mulai, :durasi_sewa, :status_reservasi)";
+    // Perbaikan nama parameter query SQL
+    $query = "INSERT INTO reservasi (ID_Penyewa, ID_Kamar, Tanggal_Reservasi, Tanggal_Mulai, Durasi_Sewa, Status_Reservasi) 
+              VALUES (:ID_Penyewa, :ID_Kamar, :Tanggal_Reservasi, :Tanggal_Mulai, :Durasi_Sewa, :Status_Reservasi)";
 
     try {
         $stmt = $pdo->prepare($query);
@@ -22,7 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'durasi_sewa' => $durasi_sewa,
             'status_reservasi' => $status_reservasi
         ]);
-        header('Location: ../index.php?success=1');
+
+        // Redirect ke halaman reservasi jika berhasil
+        header('Location: ../reservasi.php?success=1');
+        exit;
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

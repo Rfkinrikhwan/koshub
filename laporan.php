@@ -13,7 +13,7 @@ if (isset($_GET['delete'])) {
     $query = "DELETE FROM Laporan WHERE ID_Laporan = :id";
     $stmt = $pdo->prepare($query);
     $stmt->execute(['id' => $id]);
-    header('Location: index.php?deleted=1');
+    header('Location: laporan.php?deleted=1');
 }
 ?>
 
@@ -39,7 +39,7 @@ if (isset($_GET['delete'])) {
             <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
                 <div class="flex items-center justify-between">
                     <h3 class="text-xl font-semibold text-gray-800">Data Laporan</h3>
-                    <a href="forms/add_kamar.php" class="px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 transition duration-150 ease-in-out text-sm font-medium">
+                    <a href="forms/add_laporan.php" class="px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 transition duration-150 ease-in-out text-sm font-medium">
                         Tambah Laporan
                     </a>
                 </div>
@@ -119,7 +119,7 @@ if (isset($_GET['delete'])) {
                                         <!-- <button class="text-blue-600 hover:text-blue-900" onclick="showDetail(<?php echo $Laporan['ID_Laporan']; ?>)">
                                             <i class="fas fa-eye"></i>
                                         </button> -->
-                                        <a class="text-green-600 hover:text-green-900" href="<?php echo htmlspecialchars('forms/edit_kamar.php?id=' . $Laporan['ID_Laporan']); ?>">
+                                        <a class="text-green-600 hover:text-green-900" href="<?php echo htmlspecialchars('forms/edit_laporan.php?id=' . $Laporan['ID_Laporan']); ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a href="?delete=<?php echo $Laporan['ID_Laporan']; ?>" class="text-red-600 hover:text-red-900"

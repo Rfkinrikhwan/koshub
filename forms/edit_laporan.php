@@ -8,7 +8,7 @@ if (!isset($_GET['id'])) {
 }
 
 $id_laporan = $_GET['id'];
-$query = "SELECT * FROM laporan WHERE id_laporan = :id_laporan";
+$query = "SELECT * FROM laporan WHERE ID_Laporan = :id_laporan";
 
 try {
     $stmt = $pdo->prepare($query);
@@ -25,34 +25,34 @@ try {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_admin = $_POST['id_admin'];
-    $jenis_laporan = $_POST['jenis_laporan'];
-    $periode = $_POST['periode'];
-    $tanggal_dibuat = $_POST['tanggal_dibuat'];
-    $status_laporan = $_POST['status_laporan'];
-    $keterangan = $_POST['keterangan'];
+    $id_admin = $_POST['ID_Admin'];
+    $jenis_laporan = $_POST['Jenis_Laporan'];
+    $periode = $_POST['Periode'];
+    $tanggal_dibuat = $_POST['Tanggal_Dibuat'];
+    $status_laporan = $_POST['Status_Laporan'];
+    $keterangan = $_POST['Keterangan'];
 
     $updateQuery = "UPDATE laporan 
-                    SET id_admin = :id_admin, 
-                        jenis_laporan = :jenis_laporan, 
-                        periode = :periode,
-                        tanggal_dibuat = :tanggal_dibuat,
-                        status_laporan = :status_laporan,
-                        keterangan = :keterangan
+                    SET ID_Admin = :ID_Admin, 
+                        Jenis_Laporan = :Jenis_Laporan, 
+                        Periode = :Periode,
+                        Tanggal_Dibuat = :Tanggal_Dibuat,
+                        Status_Laporan = :Status_Laporan,
+                        Keterangan = :Keterangan
                     WHERE id_laporan = :id_laporan";
 
     try {
         $stmt = $pdo->prepare($updateQuery);
         $stmt->execute([
-            'id_admin' => $id_admin,
-            'jenis_laporan' => $jenis_laporan,
-            'periode' => $periode,
-            'tanggal_dibuat' => $tanggal_dibuat,
-            'status_laporan' => $status_laporan,
-            'keterangan' => $keterangan,
+            'ID_Admin' => $id_admin,
+            'Jenis_Laporan' => $jenis_laporan,
+            'Periode' => $periode,
+            'Tanggal_Dibuat' => $tanggal_dibuat,
+            'Status_Laporan' => $status_laporan,
+            'Keterangan' => $keterangan,
             'id_laporan' => $id_laporan
         ]);
-        header('Location: ../index.php?edited=1');
+        header('Location: ../laporan.php?edited=1');
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
@@ -82,31 +82,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="grid gap-4 mb-6">
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">ID Admin</label>
-                            <input type="number" name="id_admin" value="<?= htmlspecialchars($laporan['id_admin']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="number" name="ID_Admin" value="<?= htmlspecialchars($laporan['ID_Admin']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Jenis Laporan</label>
-                            <input type="text" name="jenis_laporan" value="<?= htmlspecialchars($laporan['jenis_laporan']) ?>" maxlength="50" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="text" name="Jenis_Laporan" value="<?= htmlspecialchars($laporan['Jenis_Laporan']) ?>" maxlength="50" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Periode</label>
-                            <input type="text" name="periode" value="<?= htmlspecialchars($laporan['periode']) ?>" maxlength="50" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="text" name="Periode" value="<?= htmlspecialchars($laporan['Periode']) ?>" maxlength="50" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Tanggal Dibuat</label>
-                            <input type="date" name="tanggal_dibuat" value="<?= htmlspecialchars($laporan['tanggal_dibuat']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="date" name="Tanggal_Dibuat" value="<?= htmlspecialchars($laporan['Tanggal_Dibuat']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Status Laporan</label>
-                            <select name="status_laporan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
-                                <option value="pending" <?= $laporan['status_laporan'] === 'pending' ? 'selected' : '' ?>>Pending</option>
-                                <option value="approved" <?= $laporan['status_laporan'] === 'approved' ? 'selected' : '' ?>>Approved</option>
-                                <option value="rejected" <?= $laporan['status_laporan'] === 'rejected' ? 'selected' : '' ?>>Rejected</option>
+                            <select name="Status_Laporan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                                <option value="pending" <?= $laporan['Status_Laporan'] === 'pending' ? 'selected' : '' ?>>Pending</option>
+                                <option value="approved" <?= $laporan['Status_Laporan'] === 'approved' ? 'selected' : '' ?>>Approved</option>
+                                <option value="rejected" <?= $laporan['Status_Laporan'] === 'rejected' ? 'selected' : '' ?>>Rejected</option>
                             </select>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
-                            <textarea name="keterangan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required><?= htmlspecialchars($laporan['keterangan']) ?></textarea>
+                            <textarea name="Keterangan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required><?= htmlspecialchars($laporan['Keterangan']) ?></textarea>
                         </div>
                     </div>
                     <div class="flex justify-end">

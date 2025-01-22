@@ -13,7 +13,7 @@ if (isset($_GET['delete'])) {
     $query = "DELETE FROM pembayaran WHERE ID_Pembayaran = :id";
     $stmt = $pdo->prepare($query);
     $stmt->execute(['id' => $id]);
-    header('Location: index.php?deleted=1');
+    header('Location: pembayaran.php?deleted=1');
 }
 ?>
 
@@ -39,7 +39,7 @@ if (isset($_GET['delete'])) {
             <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
                 <div class="flex items-center justify-between">
                     <h3 class="text-xl font-semibold text-gray-800">Data pembayaran</h3>
-                    <a href="forms/add_kamar.php" class="px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 transition duration-150 ease-in-out text-sm font-medium">
+                    <a href="forms/add_pembayaran.php" class="px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 transition duration-150 ease-in-out text-sm font-medium">
                         Tambah pembayaran
                     </a>
                 </div>
@@ -116,10 +116,10 @@ if (isset($_GET['delete'])) {
 
                                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                     <div class="flex items-center justify-center space-x-3">
-                                        <!-- <button class="text-blue-600 hover:text-blue-900" onclick="showDetail(<?php echo $ID_Pembayaran['ID_Pembayaran']; ?>)">
+                                        <!-- <button class="text-blue-600 hover:text-blue-900" onclick="showDetail(<?php echo $Pembayaran['ID_Pembayaran']; ?>)">
                                             <i class="fas fa-eye"></i>
                                         </button> -->
-                                        <a class="text-green-600 hover:text-green-900" href="<?php echo htmlspecialchars('forms/edit_kamar.php?id=' . $ID_Pembayaran['ID_Pembayaran']); ?>">
+                                        <a class="text-green-600 hover:text-green-900" href="<?php echo htmlspecialchars('forms/edit_pembayaran.php?id=' . $Pembayaran['ID_Pembayaran']); ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a href="?delete=<?php echo $Pembayaran['ID_Pembayaran']; ?>" class="text-red-600 hover:text-red-900"

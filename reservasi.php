@@ -13,7 +13,7 @@ if (isset($_GET['delete'])) {
     $query = "DELETE FROM reservasi WHERE ID_Reservasi = :id";
     $stmt = $pdo->prepare($query);
     $stmt->execute(['id' => $id]);
-    header('Location: index.php?deleted=1');
+    header('Location: reservasi.php?deleted=1');
 }
 ?>
 

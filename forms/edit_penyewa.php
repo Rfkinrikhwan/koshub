@@ -25,35 +25,35 @@ try {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nama_lengkap = $_POST['nama_lengkap'];
-    $nik = $_POST['nik'];
-    $jenis_kelamin = $_POST['jenis_kelamin'];
-    $no_hp = $_POST['no_hp'];
-    $email = $_POST['email'];
-    $alamat_asal = $_POST['alamat_asal'];
-    $pekerjaan = $_POST['pekerjaan'];
-    $tanggal_masuk = $_POST['tanggal_masuk'];
+    $nama_lengkap = $_POST['Nama_Lengkap'];
+    $nik = $_POST['NIK'];
+    $jenis_kelamin = $_POST['Jenis_Kelamin'];
+    $no_hp = $_POST['No_HP'];
+    $email = $_POST['Email'];
+    $alamat_asal = $_POST['Alamat_Asal'];
+    $pekerjaan = $_POST['Pekerjaan'];
+    $tanggal_masuk = $_POST['Tanggal_Masuk'];
 
     $updateQuery = "UPDATE penyewa 
-                    SET nama_lengkap = :nama_lengkap, nik = :nik, jenis_kelamin = :jenis_kelamin, 
-                        no_hp = :no_hp, email = :email, alamat_asal = :alamat_asal, 
-                        pekerjaan = :pekerjaan, tanggal_masuk = :tanggal_masuk 
+                    SET Nama_Lengkap = :Nama_Lengkap, NIK = :NIK, Jenis_Kelamin = :Jenis_Kelamin, 
+                        No_Hp = :No_Hp, Email = :Email, Alamat_Asal = :Alamat_Asal, 
+                        Pekerjaan = :Pekerjaan, Tanggal_Masuk = :Tanggal_Masuk 
                     WHERE id_penyewa = :id_penyewa";
 
     try {
         $stmt = $pdo->prepare($updateQuery);
         $stmt->execute([
-            'nama_lengkap' => $nama_lengkap,
-            'nik' => $nik,
-            'jenis_kelamin' => $jenis_kelamin,
-            'no_hp' => $no_hp,
-            'email' => $email,
-            'alamat_asal' => $alamat_asal,
-            'pekerjaan' => $pekerjaan,
-            'tanggal_masuk' => $tanggal_masuk,
+            'Nama_Lengkap' => $nama_lengkap,
+            'NIK' => $nik,
+            'Jenis_Kelamin' => $jenis_kelamin,
+            'No_Hp' => $no_hp,
+            'Email' => $email,
+            'Alamat_Asal' => $alamat_asal,
+            'Pekerjaan' => $pekerjaan,
+            'Tanggal_Masuk' => $tanggal_masuk,
             'id_penyewa' => $id_penyewa
         ]);
-        header('Location: ../index.php?edited=1');
+        header('Location: ../penyewa.php?edited=1');
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
@@ -83,38 +83,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="grid gap-4 mb-6">
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
-                            <input type="text" name="nama_lengkap" value="<?= htmlspecialchars($penyewa['Nama_Lengkap']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="text" name="Nama_Lengkap" value="<?= htmlspecialchars($penyewa['Nama_Lengkap']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">NIK</label>
-                            <input type="text" name="nik" value="<?= htmlspecialchars($penyewa['nik']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="number" name="NIK" value="<?= htmlspecialchars($penyewa['NIK']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Jenis Kelamin</label>
-                            <select name="jenis_kelamin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <select name="Jenis_Kelamin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                                 <option value="Laki-laki" <?= $penyewa['Jenis_Kelamin'] === 'Laki-laki' ? 'selected' : '' ?>>Laki-laki</option>
                                 <option value="Perempuan" <?= $penyewa['Jenis_Kelamin'] === 'Perempuan' ? 'selected' : '' ?>>Perempuan</option>
                             </select>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">No. HP</label>
-                            <input type="text" name="no_hp" value="<?= htmlspecialchars($penyewa['No_Hp']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="number" name="No_HP" value="<?= htmlspecialchars($penyewa['No_HP']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                            <input type="email" name="email" value="<?= htmlspecialchars($penyewa['Email']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="Email" name="Email" value="<?= htmlspecialchars($penyewa['Email']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Alamat Asal</label>
-                            <textarea name="alamat_asal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required><?= htmlspecialchars($penyewa['alamat_asal']) ?></textarea>
+                            <textarea name="Alamat_Asal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required><?= htmlspecialchars($penyewa['Alamat_Asal']) ?></textarea>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Pekerjaan</label>
-                            <input type="text" name="pekerjaan" value="<?= htmlspecialchars($penyewa['pekerjaan']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="text" name="Pekerjaan" value="<?= htmlspecialchars($penyewa['Pekerjaan']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Tanggal Masuk</label>
-                            <input type="date" name="tanggal_masuk" value="<?= htmlspecialchars($penyewa['tanggal_masuk']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="date" name="Tanggal_Masuk" value="<?= htmlspecialchars($penyewa['Tanggal_Masuk']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                     </div>
                     <div class="flex justify-end">

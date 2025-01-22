@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'status_pembayaran' => $status_pembayaran,
             'bukti_pembayaran' => $bukti_pembayaran
         ]);
-        header('Location: ../index.php?success=1');
+        header('Location: ../pembayaran.php?success=1');
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

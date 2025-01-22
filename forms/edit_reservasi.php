@@ -16,7 +16,7 @@ try {
     $reservasi = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$reservasi) {
-        header('Location: ../index.php?error=not_found');
+        header('Location: ../reservasi.php?error=not_found');
         exit;
     }
 } catch (PDOException $e) {
@@ -25,31 +25,31 @@ try {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_penyewa = $_POST['id_penyewa'];
-    $id_kamar = $_POST['id_kamar'];
-    $tanggal_reservasi = $_POST['tanggal_reservasi'];
-    $tanggal_mulai = $_POST['tanggal_mulai'];
-    $durasi_sewa = $_POST['durasi_sewa'];
-    $status_reservasi = $_POST['status_reservasi'];
+    $id_penyewa = $_POST['ID_Penyewa'];
+    $id_kamar = $_POST['ID_Kamar'];
+    $tanggal_reservasi = $_POST['Tanggal_Reservasi'];
+    $tanggal_mulai = $_POST['Tanggal_Mulai'];
+    $durasi_sewa = $_POST['Durasi_Sewa'];
+    $status_reservasi = $_POST['Status_Reservasi'];
 
     $updateQuery = "UPDATE reservasi 
-                    SET id_penyewa = :id_penyewa, id_kamar = :id_kamar, 
-                        tanggal_reservasi = :tanggal_reservasi, tanggal_mulai = :tanggal_mulai, 
-                        durasi_sewa = :durasi_sewa, status_reservasi = :status_reservasi 
+                    SET ID_Penyewa = :ID_Penyewa, ID_Kamar = :ID_Kamar, 
+                        Tanggal_Reservasi = :Tanggal_Reservasi, Tanggal_Mulai = :Tanggal_Mulai, 
+                        Durasi_Sewa = :Durasi_Sewa, Status_Reservasi = :Status_Reservasi 
                     WHERE id_reservasi = :id_reservasi";
 
     try {
         $stmt = $pdo->prepare($updateQuery);
         $stmt->execute([
-            'id_penyewa' => $id_penyewa,
-            'id_kamar' => $id_kamar,
-            'tanggal_reservasi' => $tanggal_reservasi,
-            'tanggal_mulai' => $tanggal_mulai,
-            'durasi_sewa' => $durasi_sewa,
-            'status_reservasi' => $status_reservasi,
+            'ID_Penyewa' => $id_penyewa,
+            'ID_Kamar' => $id_kamar,
+            'Tanggal_Reservasi' => $tanggal_reservasi,
+            'Tanggal_Mulai' => $tanggal_mulai,
+            'Durasi_Sewa' => $durasi_sewa,
+            'Status_Reservasi' => $status_reservasi,
             'id_reservasi' => $id_reservasi
         ]);
-        header('Location: ../index.php?edited=1');
+        header('Location: ../reservasi.php?edited=1');
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
@@ -79,30 +79,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="grid gap-4 mb-6">
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">ID Penyewa</label>
-                            <input type="number" name="id_penyewa" value="<?= htmlspecialchars($reservasi['id_penyewa']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="number" name="ID_Penyewa" value="<?= htmlspecialchars($reservasi['ID_Penyewa']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">ID Kamar</label>
-                            <input type="number" name="id_kamar" value="<?= htmlspecialchars($reservasi['id_kamar']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="number" name="ID_Kamar" value="<?= htmlspecialchars($reservasi['ID_Kamar']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Tanggal Reservasi</label>
-                            <input type="date" name="tanggal_reservasi" value="<?= htmlspecialchars($reservasi['tanggal_reservasi']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="date" name="Tanggal_Reservasi" value="<?= htmlspecialchars($reservasi['Tanggal_Reservasi']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Tanggal Mulai</label>
-                            <input type="date" name="tanggal_mulai" value="<?= htmlspecialchars($reservasi['tanggal_mulai']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="date" name="Tanggal_Mulai" value="<?= htmlspecialchars($reservasi['Tanggal_Mulai']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Durasi Sewa (Bulan)</label>
-                            <input type="number" name="durasi_sewa" value="<?= htmlspecialchars($reservasi['durasi_sewa']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="number" name="Durasi_Sewa" value="<?= htmlspecialchars($reservasi['Durasi_Sewa']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Status Reservasi</label>
                             <select name="status_reservasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
-                                <option value="Pending" <?= $reservasi['status_reservasi'] === 'Pending' ? 'selected' : '' ?>>Pending</option>
-                                <option value="Confirmed" <?= $reservasi['status_reservasi'] === 'Confirmed' ? 'selected' : '' ?>>Confirmed</option>
-                                <option value="Cancelled" <?= $reservasi['status_reservasi'] === 'Cancelled' ? 'selected' : '' ?>>Cancelled</option>
+                                <option value="Pending" <?= $reservasi['Status_Reservasi'] === 'Pending' ? 'selected' : '' ?>>Pending</option>
+                                <option value="Confirmed" <?= $reservasi['Status_Reservasi'] === 'Confirmed' ? 'selected' : '' ?>>Confirmed</option>
+                                <option value="Cancelled" <?= $reservasi['Status_Reservasi'] === 'Cancelled' ? 'selected' : '' ?>>Cancelled</option>
                             </select>
                         </div>
                     </div>

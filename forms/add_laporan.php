@@ -3,26 +3,26 @@ require_once '../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_admin = $_POST['id_admin'];
-    $jenis_laporan = $_POST['jenis_laporan'];
-    $periode = $_POST['periode'];
-    $tanggal_dibuat = $_POST['tanggal_dibuat'];
-    $status_laporan = $_POST['status_laporan'];
-    $keterangan = $_POST['keterangan'];
+    $jenis_laporan = $_POST['Jenis_Laporan'];
+    $periode = $_POST['Periode'];
+    $tanggal_dibuat = $_POST['Tanggal_Dibuat'];
+    $status_laporan = $_POST['Status_Laporan'];
+    $keterangan = $_POST['Keterangan'];
 
-    $query = "INSERT INTO laporan (id_admin, jenis_laporan, periode, tanggal_dibuat, status_laporan, keterangan) 
-              VALUES (:id_admin, :jenis_laporan, :periode, :tanggal_dibuat, :status_laporan, :keterangan)";
+    $query = "INSERT INTO laporan (id_Admin, Jenis_Laporan, Periode, Tanggal_Dibuat, Status_Laporan, Keterangan) 
+              VALUES (:id_admin, :Jenis_Laporan, :Periode, :Tanggal_Dibuat, :Status_Laporan, :Keterangan)";
 
     try {
         $stmt = $pdo->prepare($query);
         $stmt->execute([
             'id_admin' => $id_admin,
-            'jenis_laporan' => $jenis_laporan,
-            'periode' => $periode,
-            'tanggal_dibuat' => $tanggal_dibuat,
-            'status_laporan' => $status_laporan,
-            'keterangan' => $keterangan
+            'Jenis_Laporan' => $jenis_laporan,
+            'Periode' => $periode,
+            'Tanggal_Dibuat' => $tanggal_dibuat,
+            'Status_Laporan' => $status_laporan,
+            'Keterangan' => $keterangan
         ]);
-        header('Location: ../index.php?success=1');
+        header('Location: ../laporan.php?success=1');
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
@@ -57,19 +57,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Jenis Laporan</label>
-                            <input type="text" name="jenis_laporan" maxlength="50" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            <input type="text" name="Jenis_Laporan" maxlength="50" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Periode</label>
-                            <input type="text" name="periode" maxlength="50" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            <input type="text" name="Periode" maxlength="50" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Tanggal Dibuat</label>
-                            <input type="date" name="tanggal_dibuat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            <input type="date" name="Tanggal_Dibuat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Status Laporan</label>
-                            <select name="status_laporan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            <select name="Status_Laporan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                                 <option value="pending">Pending</option>
                                 <option value="approved">Approved</option>
                                 <option value="rejected">Rejected</option>
@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
-                            <textarea name="keterangan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
+                            <textarea name="Keterangan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
                         </div>
                     </div>
                     <div class="flex justify-end">

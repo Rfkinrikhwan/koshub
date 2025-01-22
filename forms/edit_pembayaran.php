@@ -16,7 +16,7 @@ try {
     $pembayaran = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$pembayaran) {
-        header('Location: ../index.php?error=not_found');
+        header('Location: ../pembayaran.php?error=not_found');
         exit;
     }
 } catch (PDOException $e) {
@@ -25,34 +25,34 @@ try {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_reservasi = $_POST['id_reservasi'];
-    $tanggal_pembayaran = $_POST['tanggal_pembayaran'];
-    $jumlah_pembayaran = $_POST['jumlah_pembayaran'];
-    $metode_pembayaran = $_POST['metode_pembayaran'];
-    $status_pembayaran = $_POST['status_pembayaran'];
-    $bukti_pembayaran = $_POST['bukti_pembayaran'];
+    $id_reservasi = $_POST['ID_Reservasi'];
+    $tanggal_pembayaran = $_POST['Tanggal_Pembayaran'];
+    $jumlah_pembayaran = $_POST['Jumlah_Pembayaran'];
+    $metode_pembayaran = $_POST['Metode_Pembayaran'];
+    $status_pembayaran = $_POST['Status_Pembayaran'];
+    $bukti_pembayaran = $_POST['Bukti_Pembayaran'];
 
     $updateQuery = "UPDATE pembayaran 
-                    SET id_reservasi = :id_reservasi, 
-                        tanggal_pembayaran = :tanggal_pembayaran, 
-                        jumlah_pembayaran = :jumlah_pembayaran, 
-                        metode_pembayaran = :metode_pembayaran, 
-                        status_pembayaran = :status_pembayaran, 
-                        bukti_pembayaran = :bukti_pembayaran
+                    SET ID_Reservasi = :ID_Reservasi, 
+                        Tanggal_Pembayaran = :Tanggal_Pembayaran, 
+                        Jumlah_Pembayaran = :Jumlah_Pembayaran, 
+                        Metode_Pembayaran = :Metode_Pembayaran, 
+                        Status_Pembayaran = :Status_Pembayaran, 
+                        Bukti_Pembayaran = :Bukti_Pembayaran
                     WHERE id_pembayaran = :id_pembayaran";
 
     try {
         $stmt = $pdo->prepare($updateQuery);
         $stmt->execute([
-            'id_reservasi' => $id_reservasi,
-            'tanggal_pembayaran' => $tanggal_pembayaran,
-            'jumlah_pembayaran' => $jumlah_pembayaran,
-            'metode_pembayaran' => $metode_pembayaran,
-            'status_pembayaran' => $status_pembayaran,
-            'bukti_pembayaran' => $bukti_pembayaran,
+            'ID_Reservasi' => $id_reservasi,
+            'Tanggal_Pembayaran' => $tanggal_pembayaran,
+            'Jumlah_Pembayaran' => $jumlah_pembayaran,
+            'Metode_Pembayaran' => $metode_pembayaran,
+            'Status_Pembayaran' => $status_pembayaran,
+            'Bukti_Pembayaran' => $bukti_pembayaran,
             'id_pembayaran' => $id_pembayaran
         ]);
-        header('Location: ../index.php?edited=1');
+        header('Location: ../pembayaran.php?edited=1');
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
@@ -82,35 +82,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="grid gap-4 mb-6">
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">ID Reservasi</label>
-                            <input type="number" name="id_reservasi" value="<?= htmlspecialchars($pembayaran['id_reservasi']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="number" name="ID_Reservasi" value="<?= htmlspecialchars($pembayaran['ID_Reservasi']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Tanggal Pembayaran</label>
-                            <input type="date" name="tanggal_pembayaran" value="<?= htmlspecialchars($pembayaran['tanggal_pembayaran']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="date" name="Tanggal_Pembayaran" value="<?= htmlspecialchars($pembayaran['Tanggal_Pembayaran']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Jumlah Pembayaran</label>
-                            <input type="number" step="0.01" name="jumlah_pembayaran" value="<?= htmlspecialchars($pembayaran['jumlah_pembayaran']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                            <input type="number" step="0.01" name="Jumlah_Pembayaran" value="<?= htmlspecialchars($pembayaran['Jumlah_Pembayaran']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Metode Pembayaran</label>
                             <select name="metode_pembayaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
-                                <option value="Transfer" <?= $pembayaran['metode_pembayaran'] === 'Transfer' ? 'selected' : '' ?>>Transfer</option>
-                                <option value="Tunai" <?= $pembayaran['metode_pembayaran'] === 'Tunai' ? 'selected' : '' ?>>Tunai</option>
-                                <option value="Kartu Kredit" <?= $pembayaran['metode_pembayaran'] === 'Kartu Kredit' ? 'selected' : '' ?>>Kartu Kredit</option>
+                                <option value="Transfer" <?= $pembayaran['Metode_Pembayaran'] === 'Transfer' ? 'selected' : '' ?>>Transfer</option>
+                                <option value="Tunai" <?= $pembayaran['Metode_Pembayaran'] === 'Tunai' ? 'selected' : '' ?>>Tunai</option>
+                                <option value="Kartu Kredit" <?= $pembayaran['Metode_Pembayaran'] === 'Kartu Kredit' ? 'selected' : '' ?>>Kartu Kredit</option>
                             </select>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Status Pembayaran</label>
                             <select name="status_pembayaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
-                                <option value="Pending" <?= $pembayaran['status_pembayaran'] === 'Pending' ? 'selected' : '' ?>>Pending</option>
-                                <option value="Completed" <?= $pembayaran['status_pembayaran'] === 'Completed' ? 'selected' : '' ?>>Completed</option>
-                                <option value="Failed" <?= $pembayaran['status_pembayaran'] === 'Failed' ? 'selected' : '' ?>>Failed</option>
+                                <option value="Pending" <?= $pembayaran['Status_Pembayaran'] === 'Pending' ? 'selected' : '' ?>>Pending</option>
+                                <option value="Completed" <?= $pembayaran['Status_Pembayaran'] === 'Completed' ? 'selected' : '' ?>>Completed</option>
+                                <option value="Failed" <?= $pembayaran['Status_Pembayaran'] === 'Failed' ? 'selected' : '' ?>>Failed</option>
                             </select>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Bukti Pembayaran</label>
-                            <textarea name="bukti_pembayaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"><?= htmlspecialchars($pembayaran['bukti_pembayaran']) ?></textarea>
+                            <textarea name="Bukti_Pembayaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"><?= htmlspecialchars($pembayaran['Bukti_Pembayaran']) ?></textarea>
                         </div>
                     </div>
                     <div class="flex justify-end">

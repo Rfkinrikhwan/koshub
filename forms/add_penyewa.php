@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'pekerjaan' => $pekerjaan,
             'tanggal_masuk' => $tanggal_masuk
         ]);
-        header('Location: ../index.php?success=1');
+        header('Location: ../penyewa.php?success=1');
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">NIK</label>
-                            <input type="text" name="nik" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            <input type="number" name="nik" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                         </div>
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900">Jenis Kelamin</label>
