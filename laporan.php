@@ -108,6 +108,11 @@ if (isset($_GET['delete'])) {
                                         <?php echo ($Laporan['Status_Laporan']); ?>
                                     </div>
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">
+                                        <?php echo ($Laporan['Keterangan']); ?>
+                                    </div>
+                                </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                     <div class="flex items-center justify-center space-x-3">

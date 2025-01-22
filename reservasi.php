@@ -39,7 +39,7 @@ if (isset($_GET['delete'])) {
             <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
                 <div class="flex items-center justify-between">
                     <h3 class="text-xl font-semibold text-gray-800">Data Reservasi</h3>
-                    <a href="forms/add_kamar.php" class="px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 transition duration-150 ease-in-out text-sm font-medium">
+                    <a href="forms/add_reservasi.php" class="px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 transition duration-150 ease-in-out text-sm font-medium">
                         Tambah Reservasi
                     </a>
                 </div>
@@ -113,7 +113,7 @@ if (isset($_GET['delete'])) {
                                         <!-- <button class="text-blue-600 hover:text-blue-900" onclick="showDetail(<?php echo $reservasi['ID_Reservasi']; ?>)">
                                             <i class="fas fa-eye"></i>
                                         </button> -->
-                                        <a class="text-green-600 hover:text-green-900" href="<?php echo htmlspecialchars('forms/edit_reservasi.php?id=' . $reservasi['ID_Kamar']); ?>">
+                                        <a class="text-green-600 hover:text-green-900" href="<?php echo htmlspecialchars('forms/edit_reservasi.php?id=' . $reservasi['ID_Reservasi']); ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a href="?delete=<?php echo $reservasi['ID_Reservasi']; ?>" class="text-red-600 hover:text-red-900"
